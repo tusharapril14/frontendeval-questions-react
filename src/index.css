@@ -1,0 +1,46 @@
+.App{
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+}
+.suggestion-list{
+    height: 130px;
+    width: 130px;
+    overflow: scroll;
+    padding: 10px;
+    font-size: 14px;
+    color: grey;
+    cursor: pointer;
+    background-color: rgb(203, 193, 193);
+}
+.dropdown-container{
+    position: relative;
+    display: inline-block;
+}
+.item-btn{
+    width: 100%;
+    margin-top: 5px;
+}
+.cart{
+    height: 200px;
+    width: 200px;
+    padding: 10px;
+    font-size: 14px;
+    color: grey;
+    cursor: pointer;
+    background-color: rgb(203, 193, 193);
+}
+.cross{
+    color: red;
+}
+.flex-around{
+    display: flex;
+    justify-content: space-evenly;
+}
+.shopping-cart{
+    display: flex;
+    justify-content: center;
+}
+.text-strikethrough{
+    text-decoration: line-through;
+}

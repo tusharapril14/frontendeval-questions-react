@@ -1,9 +1,10 @@
 import './App.css';
+import AutoSuggestion from './Auto-Suggestion/AutoSuggestion';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <AutoSuggestion/>
     </div>
   );
 }
