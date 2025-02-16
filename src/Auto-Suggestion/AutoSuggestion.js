@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const AutoSuggestion = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -7,12 +7,13 @@ const AutoSuggestion = () => {
   };
 
   const [itemList, setItemList] = useState([]);
-  const [shoppingCart, setShoppingCart] = useState([])
+  const [shoppingCart, setShoppingCart] = useState([]);
+  const debounceTimer = useRef(null)
   useEffect(() => {
-    fetchItems();
+    handleSearchDebounce();
   }, [searchInput]);
 
-  const fetchItems = async () => {
+  const fetchItems = async (type,c,b) => {
     try{
     const response = await fetch(
         `https://api.frontendeval.com/fake/food/${searchInput}`
@@ -30,6 +31,16 @@ const AutoSuggestion = () => {
     setSearchInput("");
     setItemList([]);
   }
+
+//   debounce using function
+const handleSearchDebounce = debounce(fetchItems, 500);
+ function debounce(fn, timeout) {
+    return function() {
+      clearTimeout(debounceTimer.current);
+      debounceTimer.current = setTimeout(() => fn.apply(this), timeout);
+    };
+  }
+
   const handleDeleteCart = (item)=>{
    let filteredCart = [...shoppingCart].filter(cart => cart.id !== item.id)
     setShoppingCart(filteredCart);
